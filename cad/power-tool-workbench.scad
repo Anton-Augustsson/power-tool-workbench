@@ -62,7 +62,7 @@ bottomHeight = 100;
 
 // storage blocks
 translate([
-    80,
+    110,
     10,
     200]) 
 cube(size = [
@@ -73,7 +73,7 @@ cube(size = [
 // storage blocks
 color("Gray")
 translate([
-    80,
+    110,
     10,
     200+357+40]) 
 cube(size = [
@@ -83,9 +83,9 @@ cube(size = [
 
 // storage blocks
 translate([
-    540,
+    650,
     10,
-    165]) 
+    180]) 
 cube(size = [
     442,
     357,
@@ -94,9 +94,9 @@ cube(size = [
 color("Gray")
 // storage blocks
 translate([
-    540,
+    650,
     10,
-    165+253+20]) 
+    180+253+20]) 
 cube(size = [
     442,
     357,
@@ -415,7 +415,7 @@ cube(size = [
 
 
 // mdf top
-color("Tan")
+/*color("Tan")
 translate([
     0,
     0,
@@ -425,3 +425,4 @@ cube(size = [
     standardSheathingLength,
     standardSheathingWidth,
     mdfTopThickness]);
+*/
