@@ -1,6 +1,6 @@
 /*
 
-    Nightstand
+    Power tool workbench
     
     By Anton Augustsson
     
@@ -24,7 +24,7 @@ plywoodTopThickness = 12;
 
 // Side protection for ply and mdf
 edgeTopThickness = 20; 
-edgeTopWidth = 110;
+edgeTopWidth = 167;
 edgeTopLengthX = standardSheathingLength
     +2*edgeTopThickness;
 edgeTopLengthY = standardSheathingWidth
@@ -32,15 +32,16 @@ edgeTopLengthY = standardSheathingWidth
 
 // 4 list betweend mdf and ply (Pine)
 listTopThickness = 20; 
-listTopWidth = edgeTopWidth
-    -plywoodTopThickness
-    -mdfTopThickness;
+listTopWidth = 80;
 listTopLengthX = standardSheathingLength/4
     -listTopThickness;
 listTopLengthY = standardSheathingWidth;
 
 // 6 legs (Pine)
-legLength = 900-edgeTopWidth;
+legLength = 900
+    -plywoodTopThickness
+    -mdfTopThickness
+    -listTopWidth;
 legWidth = 69;
 legThickness = 42;
 
@@ -256,6 +257,7 @@ cube(size = [
     standardSheathingLength,
     standardSheathingWidth,
     plywoodTopThickness]);
+
     
 // ---------- Top ----------
 
@@ -274,7 +276,7 @@ cube(size = [
 translate([
     -edgeTopThickness,
     -edgeTopThickness,
-    legLength]) 
+    900-edgeTopWidth]) 
 cube(size = [
     edgeTopLengthX,
     edgeTopThickness,
@@ -284,7 +286,7 @@ cube(size = [
 translate([
     -edgeTopThickness,
     standardSheathingWidth,
-    legLength]) 
+    900-edgeTopWidth]) 
 cube(size = [
     edgeTopLengthX,
     edgeTopThickness,
@@ -294,7 +296,7 @@ cube(size = [
 translate([
     -edgeTopThickness,
     -edgeTopThickness,
-    legLength]) 
+    900-edgeTopWidth]) 
 cube(size = [
     edgeTopThickness,
     edgeTopLengthY,
@@ -304,7 +306,7 @@ cube(size = [
 translate([
     standardSheathingLength,
     -edgeTopThickness,
-    legLength]) 
+    900-edgeTopWidth]) 
 cube(size = [
     edgeTopThickness,
     edgeTopLengthY,
