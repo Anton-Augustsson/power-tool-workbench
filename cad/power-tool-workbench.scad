@@ -56,10 +56,81 @@ listBottomLengthY2 = standardSheathingWidth
     +listBottomThickness*2;
 bottomHeight = 100;
 
+storageUnitLength=standardSheathingLength/2
+    -legThickness*3/2;
+storageUnitWidth=400;  
+storageUnitHeight=(900-edgeTopWidth)
+    -(bottomHeight+listBottomWidth2);
+storageUnitThickness=12;
+
 /*
     ---------- Code ---------- 
 */
 
+
+
+// left storageUunit
+color("Gray")
+union () {
+
+// Left    
+translate([
+    legThickness,
+    0,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitThickness,
+    storageUnitWidth,
+    storageUnitHeight]);
+
+// Right
+translate([
+    legThickness+storageUnitLength
+    -storageUnitThickness,
+    0,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitThickness,
+    storageUnitWidth,
+    storageUnitHeight]);
+
+// Back
+translate([
+    legThickness
+    +storageUnitThickness,
+    storageUnitWidth-storageUnitThickness,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitLength-storageUnitThickness*2,
+    storageUnitThickness,
+    storageUnitHeight]);
+    
+// Top
+translate([
+    legThickness
+    +storageUnitThickness,
+    0,
+    bottomHeight+listBottomWidth2
+    +storageUnitHeight
+    -storageUnitThickness]) 
+cube(size = [
+    storageUnitLength-storageUnitThickness*2,
+    storageUnitWidth,
+    storageUnitThickness]);
+
+// Bottom
+translate([
+    legThickness
+    +storageUnitThickness,
+    0,
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
+cube(size = [
+    storageUnitLength-storageUnitThickness*2,
+    storageUnitWidth,
+    storageUnitThickness]);
+       
+}
 
 // storage blocks
 translate([
@@ -103,6 +174,45 @@ cube(size = [
     357,
     253]);
 
+
+// Right storageUunit
+color("Gray")
+union () {
+translate([
+    legThickness*2+storageUnitLength,
+    0,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight]);
+}
+
+// Right back storageUunit
+color("Gray")
+union () {
+translate([
+    legThickness*2+storageUnitLength,
+    standardSheathingWidth-storageUnitWidth,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight]);
+}
+
+// Left back storageUunit
+color("Gray")
+union () {
+translate([
+    legThickness,
+    standardSheathingWidth-storageUnitWidth,
+    bottomHeight+listBottomWidth2]) 
+cube(size = [
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight]);
+}
 
 
 // ---------- Leg ----------
