@@ -77,7 +77,8 @@ union () {
 translate([
     legThickness,
     0,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitThickness,
     storageUnitWidth,
@@ -88,7 +89,8 @@ translate([
     legThickness+storageUnitLength
     -storageUnitThickness,
     0,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitThickness,
     storageUnitWidth,
@@ -99,7 +101,8 @@ translate([
     legThickness
     +storageUnitThickness,
     storageUnitWidth-storageUnitThickness,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitLength-storageUnitThickness*2,
     storageUnitThickness,
@@ -181,7 +184,8 @@ union () {
 translate([
     legThickness*2+storageUnitLength,
     0,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitLength,
     storageUnitWidth,
@@ -194,7 +198,8 @@ union () {
 translate([
     legThickness*2+storageUnitLength,
     standardSheathingWidth-storageUnitWidth,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitLength,
     storageUnitWidth,
@@ -207,11 +212,25 @@ union () {
 translate([
     legThickness,
     standardSheathingWidth-storageUnitWidth,
-    bottomHeight+listBottomWidth2]) 
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
 cube(size = [
     storageUnitLength,
     storageUnitWidth,
     storageUnitHeight]);
+}
+color("Red")
+union () {
+translate([
+    legThickness,
+    storageUnitWidth,
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness]) 
+cube(size = [
+    standardSheathingLength-legThickness*2,
+    standardSheathingWidth
+    -storageUnitWidth*2,
+    300]);
 }
 
 
