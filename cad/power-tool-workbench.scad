@@ -15,6 +15,7 @@ use <module/storage-unit.scad>;
 use <module/power-tool-storage.scad>;
 use <module/drawer-storage.scad>;
 use <module/middle-storage-unit.scad>;
+use <module/top.scad>;
 
 /*
     ---------- Variables ---------- 
@@ -301,170 +302,19 @@ cube(size = [
     
 // ---------- Top ----------
 
-// top ply
-translate([
-    0,
-    0,
-    legLength]) 
-cube(size = [
-    standardSheathingLength,
+top (
     standardSheathingWidth,
-    plywoodTopThickness]);
-       
-       
-// top front edge
-translate([
-    -edgeTopThickness,
-    -edgeTopThickness,
-    900-edgeTopWidth]) 
-cube(size = [
+    standardSheathingLength,
+    mdfTopThickness,
+    plywoodTopThickness,
+    edgeTopThickness,
+    edgeTopWidth,
     edgeTopLengthX,
-    edgeTopThickness,
-    edgeTopWidth]);
-    
-// top back edge
-translate([
-    -edgeTopThickness,
-    standardSheathingWidth,
-    900-edgeTopWidth]) 
-cube(size = [
-    edgeTopLengthX,
-    edgeTopThickness,
-    edgeTopWidth]);
-
-// top left edge
-translate([
-    -edgeTopThickness,
-    -edgeTopThickness,
-    900-edgeTopWidth]) 
-cube(size = [
-    edgeTopThickness,
     edgeTopLengthY,
-    edgeTopWidth]);
+    listTopThickness,
+    listTopWidth,
+    listTopLengthX,
+    listTopLengthY,
+    0,0,legLength
+    );
     
-// top right edge
-translate([
-    standardSheathingLength,
-    -edgeTopThickness,
-    900-edgeTopWidth]) 
-cube(size = [
-    edgeTopThickness,
-    edgeTopLengthY,
-    edgeTopWidth]);
-    
-    
-// top left list
-translate([
-    0,
-    0,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    edgeTopThickness,
-    listTopLengthY,
-    listTopWidth]);
-
-// top midle left list
-translate([
-    standardSheathingLength/4,
-    0,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    edgeTopThickness,
-    listTopLengthY,
-    listTopWidth]);
-
-// top midle list
-translate([
-    standardSheathingLength/2,
-    0,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    edgeTopThickness,
-    listTopLengthY,
-    listTopWidth]);
-
-// top right midle list
-translate([
-    standardSheathingLength/4*3,
-    0,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    edgeTopThickness,
-    listTopLengthY,
-    listTopWidth]);
-
-// top right list
-translate([
-    standardSheathingLength-edgeTopThickness,
-    0,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    edgeTopThickness,
-    listTopLengthY,
-    listTopWidth]);
-
-
-// top left lenght list
-color("Gray")
-translate([
-    edgeTopThickness*1+listTopLengthX*0,
-    standardSheathingWidth/2
-    -edgeTopThickness,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    listTopLengthX,
-    edgeTopThickness,
-    listTopWidth]);
-
-
-// top left middle lenght list
-color("Gray")
-translate([
-    edgeTopThickness*2+listTopLengthX*1,
-    standardSheathingWidth/2
-    -edgeTopThickness,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    listTopLengthX,
-    edgeTopThickness,
-    listTopWidth]);
-
-
-// top right midle lenght list
-color("Gray")
-translate([
-    edgeTopThickness*3+listTopLengthX*2,
-    standardSheathingWidth/2
-    -edgeTopThickness,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    listTopLengthX,
-    edgeTopThickness,
-    listTopWidth]);
-
-// top right lenght list
-color("Gray")
-translate([
-    edgeTopThickness*4+listTopLengthX*3,
-    standardSheathingWidth/2
-    -edgeTopThickness,
-    legLength+plywoodTopThickness]) 
-cube(size = [
-    listTopLengthX,
-    edgeTopThickness,
-    listTopWidth]);
-
-
-
-// mdf top
-/*color("Tan")
-translate([
-    0,
-    0,
-    legLength+plywoodTopThickness
-    +listTopWidth]) 
-cube(size = [
-    standardSheathingLength,
-    standardSheathingWidth,
-    mdfTopThickness]);
-*/
