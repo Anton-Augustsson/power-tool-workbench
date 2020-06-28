@@ -12,6 +12,9 @@
 use <module/simple-drawer.scad>;
 use <module/sliding-shelf.scad>;
 use <module/storage-unit.scad>;
+use <module/power-tool-storage.scad>;
+use <module/drawer-storage.scad>;
+use <module/middle-storage-unit.scad>;
 
 /*
     ---------- Variables ---------- 
@@ -71,168 +74,75 @@ storageUnitThickness=12;
 
 
 // left storageUunit
-color("Gray")
-union () {
-
-// Left    
-translate([
+powerToolStorage (
+    storageUnitThickness,
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight,
     legThickness,
     0,
     bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitThickness,
-    storageUnitWidth,
-    storageUnitHeight]);
-
-// Right
-translate([
-    legThickness+storageUnitLength
-    -storageUnitThickness,
-    0,
-    bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitThickness,
-    storageUnitWidth,
-    storageUnitHeight]);
-
-// Back
-translate([
-    legThickness
-    +storageUnitThickness,
-    storageUnitWidth-storageUnitThickness,
-    bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitLength-storageUnitThickness*2,
-    storageUnitThickness,
-    storageUnitHeight]);
-    
-// Top
-translate([
-    legThickness
-    +storageUnitThickness,
-    0,
-    bottomHeight+listBottomWidth2
-    +storageUnitHeight
-    -storageUnitThickness]) 
-cube(size = [
-    storageUnitLength-storageUnitThickness*2,
-    storageUnitWidth,
-    storageUnitThickness]);
-
-// Bottom
-translate([
-    legThickness
-    +storageUnitThickness,
-    0,
-    bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitLength-storageUnitThickness*2,
-    storageUnitWidth,
-    storageUnitThickness]);
-       
-}
-
-// storage blocks
-translate([
-    110,
-    10,
-    200]) 
-cube(size = [
-    442,
-    357,
-    389]);
-
-// storage blocks
-color("Gray")
-translate([
-    110,
-    10,
-    200+357+40]) 
-cube(size = [
-    442,
-    357,
-    117]);
-
-// storage blocks
-translate([
-    650,
-    10,
-    180]) 
-cube(size = [
-    442,
-    357,
-    253]);
-
-color("Gray")
-// storage blocks
-translate([
-    650,
-    10,
-    180+253+20]) 
-cube(size = [
-    442,
-    357,
-    253]);
-
+    +plywoodTopThickness
+    );
 
 // Right storageUunit
-color("Gray")
-union () {
-translate([
+powerToolStorage (
+    storageUnitThickness,
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight,
     legThickness*2+storageUnitLength,
     0,
     bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitLength,
-    storageUnitWidth,
-    storageUnitHeight]);
-}
+    +plywoodTopThickness
+    );
 
-// Right back storageUunit
-color("Gray")
-union () {
-translate([
-    legThickness*2+storageUnitLength,
-    standardSheathingWidth-storageUnitWidth,
-    bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
-    storageUnitLength,
-    storageUnitWidth,
-    storageUnitHeight]);
-}
 
 // Left back storageUunit
-color("Gray")
-union () {
-translate([
-    legThickness,
-    standardSheathingWidth-storageUnitWidth,
-    bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
+drawerStorage (
+    storageUnitThickness,
     storageUnitLength,
     storageUnitWidth,
-    storageUnitHeight]);
-}
-color("Red")
-union () {
-translate([
-    legThickness,
-    storageUnitWidth,
+    storageUnitHeight,
+    legThickness+storageUnitLength,
+    standardSheathingWidth-storageUnitWidth
+    +storageUnitWidth,
     bottomHeight+listBottomWidth2
-    +plywoodTopThickness]) 
-cube(size = [
+    +plywoodTopThickness,
+    180
+    );
+    
+
+// Right back storageUunit
+drawerStorage (
+    storageUnitThickness,
+    storageUnitLength,
+    storageUnitWidth,
+    storageUnitHeight,
+    legThickness*2+storageUnitLength*2,
+    standardSheathingWidth-storageUnitWidth
+    +storageUnitWidth,
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness,
+    180
+    );
+
+
+middleStorageUnit (
+    storageUnitThickness,
     standardSheathingLength-legThickness*2,
     standardSheathingWidth
     -storageUnitWidth*2,
-    300]);
-}
+    300,
+    legThickness,
+    (storageUnitWidth)*2
+    +storageUnitThickness/5*8,
+    bottomHeight+listBottomWidth2
+    +plywoodTopThickness,
+    -90
+    );
+    
+
 
 
 // ---------- Leg ----------

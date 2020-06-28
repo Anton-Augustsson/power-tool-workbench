@@ -16,8 +16,7 @@ module simpleDrawer (
     lenghtDrawer,
     widthDrawer,
     heightDrawer,
-    xDrawer,yDrawer,zDrawer,
-    yRotate
+    xDrawer,yDrawer,zDrawer
     ){
 /*
     ---------- Local varibles ---------- 
@@ -151,6 +150,5 @@ simpleDrawer (
     length,
     width,
     height,
-    x,y,z,
-    yRotate
+    x,y,z
     );

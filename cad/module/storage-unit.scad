@@ -14,8 +14,7 @@ module storageUnit (
     length,
     width,
     height,
-    x,y,z,
-    yRotate
+    x,y,z
     ){
 /*
     ---------- Local varibles ---------- 
@@ -53,6 +52,19 @@ cube(size = [
     thickness,
     length-thickness,
     height]);
+
+
+// Divider
+color("Wheat")
+translate([
+    (width-thickness)/2,
+    0,
+    thickness]) 
+cube(size = [
+    thickness,
+    length-thickness,
+    height-thickness*2]);
+    
     
 // Back
 color("Wheat")
@@ -87,9 +99,8 @@ cube(size = [
     length-thickness,
     thickness]);    
 
-}
 
-}
+}}
     
 /*
     ---------- Example ---------- 
@@ -102,7 +113,6 @@ length = 500;
 width  = 600;
 height = 400;
 
-
 x=0;
 y=0;
 z=0;
@@ -113,6 +123,5 @@ storageUnit (
     length,
     width,
     height,
-    x,y,z,
-    yRotate
+    x,y,z
     );
