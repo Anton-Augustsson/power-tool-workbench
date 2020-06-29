@@ -8,6 +8,7 @@
 */
 
 use <removal-side-holes.scad>;
+use <mdf-board-with-parf-guide.scad>;
 
 module top (
     standardSheathingWidth,
@@ -208,97 +209,46 @@ cube(size = [
     edgeTopThickness,
     listTopWidth]);
 
-
-
-// mdf top
-color("BurlyWood")
-translate([
-    0,
-    0,
-    plywoodTopThickness
-    +listTopWidth]) 
-cube(size = [
-    standardSheathingLength,
+mdfBoardWithParfGuide (
     standardSheathingWidth,
-    mdfTopThickness]);
+    standardSheathingLength,
+    mdfTopThickness,
+    0,0,
+    plywoodTopThickness
+    +listTopWidth
+    );
 
 }
 
 union () {
-// left front
+
+// Front holes
+for(i = [
+    1:
+    2: 
+    7])
 removalSideHoles (
     edgeTopThickness,
     lengthRemovalSideHoles,
-    standardSheathingLength/8
+    standardSheathingLength/8*i
     -lengthRemovalSideHoles/2,
     -edgeTopThickness,
     plywoodTopThickness
     );
-
+    
+// Back holes
+for(i = [
+    1:
+    2: 
+    7])
 removalSideHoles (
     edgeTopThickness,
     lengthRemovalSideHoles,
-    standardSheathingLength/8*3
-    -lengthRemovalSideHoles/2,
-    -edgeTopThickness,
-    plywoodTopThickness
-    );
-
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8*5
-    -lengthRemovalSideHoles/2,
-    -edgeTopThickness,
-    plywoodTopThickness
-    );
-
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8*7
-    -lengthRemovalSideHoles/2,
-    -edgeTopThickness,
-    plywoodTopThickness
-    );
-
-// back left
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8
+    standardSheathingLength/8*i
     -lengthRemovalSideHoles/2,
     standardSheathingWidth,
     plywoodTopThickness
     );
-
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8*3
-    -lengthRemovalSideHoles/2,
-    standardSheathingWidth,
-    plywoodTopThickness
-    );
-
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8*5
-    -lengthRemovalSideHoles/2,
-    standardSheathingWidth,
-    plywoodTopThickness
-    );
-
-removalSideHoles (
-    edgeTopThickness,
-    lengthRemovalSideHoles,
-    standardSheathingLength/8*7
-    -lengthRemovalSideHoles/2,
-    standardSheathingWidth,
-    plywoodTopThickness
-    );
-
 }
 
 }}
