@@ -16,6 +16,7 @@ use <module/power-tool-storage.scad>;
 use <module/drawer-storage.scad>;
 use <module/middle-storage-unit.scad>;
 use <module/top.scad>;
+use <module/bottom.scad>;
 
 /*
     ---------- Variables ---------- 
@@ -72,9 +73,9 @@ storageUnitThickness=12;
     ---------- Code ---------- 
 */
 
+// ---------- Storage Unit ----------
 
-
-// left storageUunit
+// left storageUnit
 powerToolStorage (
     storageUnitThickness,
     storageUnitLength,
@@ -86,7 +87,7 @@ powerToolStorage (
     +plywoodTopThickness
     );
 
-// Right storageUunit
+// Right storageUnit
 powerToolStorage (
     storageUnitThickness,
     storageUnitLength,
@@ -99,7 +100,7 @@ powerToolStorage (
     );
 
 
-// Left back storageUunit
+// Left back storageUnit
 drawerStorage (
     storageUnitThickness,
     storageUnitLength,
@@ -114,7 +115,7 @@ drawerStorage (
     );
     
 
-// Right back storageUunit
+// Right back storageUnit
 drawerStorage (
     storageUnitThickness,
     storageUnitLength,
@@ -135,7 +136,7 @@ middleStorageUnit (
     standardSheathingWidth
     -storageUnitWidth*2,
     300,
-    legThickness,
+    legThickness,        
     (storageUnitWidth)*2
     +storageUnitThickness/5*8,
     bottomHeight+listBottomWidth2
@@ -146,159 +147,24 @@ middleStorageUnit (
 
 
 
-// ---------- Leg ----------
-
-// leg 1
-translate([
-    0,
-    0,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-// leg 2
-translate([
-    standardSheathingLength/2
-    -legThickness/2,
-    0,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-// leg 3
-translate([
-    standardSheathingLength
-    -legThickness,
-    0,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-// leg 4
-translate([
-    0,
-    standardSheathingWidth-legWidth,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-// leg 5
-translate([
-    standardSheathingLength/2
-    -legThickness/2,
-    standardSheathingWidth-legWidth,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-// leg 6
-translate([
-    standardSheathingLength
-    -legThickness,
-    standardSheathingWidth-legWidth,
-    0]) 
-cube(size = [
-    legThickness,
-    legWidth,
-    legLength]);
-
-
 // ---------- Bottom ----------
-// front bottom list
-translate([
-    0,
-    -listBottomThickness,
-    bottomHeight]) 
-cube(size = [
-    listBottomLengthX,
-    listBottomThickness,
-    listBottomWidth1]);
 
-// back bottom list
-translate([
-    0,
+bottom (
     standardSheathingWidth,
-    bottomHeight]) 
-cube(size = [
-    listBottomLengthX,
-    listBottomThickness,
-    listBottomWidth1]);
-
-// left bottom list
-translate([
-    legThickness,
-    0,
-    bottomHeight]) 
-cube(size = [
-    listBottomThickness,
-    listBottomLengthY,
-    listBottomWidth2]);
-
-// midle left bottom list
-translate([
-    standardSheathingLength/4,
-    0,
-    bottomHeight]) 
-cube(size = [
-    listBottomThickness,
-    listBottomLengthY,
-    listBottomWidth2]);
-
-// midle bottom list
-translate([
-    standardSheathingLength/2
-    -legThickness/2
-    -listBottomThickness,
-    0,
-    bottomHeight]) 
-cube(size = [
-    listBottomThickness,
-    listBottomLengthY,
-    listBottomWidth2]);
-
-// midle right bottom list
-translate([
-    standardSheathingLength/4*3,
-    0,
-    bottomHeight]) 
-cube(size = [
-    listBottomThickness,
-    listBottomLengthY,
-    listBottomWidth2]);
-
-// right bottom list
-translate([
-    standardSheathingLength
-    -legThickness
-    -listBottomThickness,
-    0,
-    bottomHeight]) 
-cube(size = [
-    listBottomThickness,
-    listBottomLengthY,
-    listBottomWidth2]);
-
-
-// bottom ply
-translate([
-    0,
-    0,
-    bottomHeight+listBottomWidth2]) 
-cube(size = [
     standardSheathingLength,
-    standardSheathingWidth,
-    plywoodTopThickness]);
-
+    plywoodTopThickness,
+    legLength,
+    legWidth,
+    legThickness,
+    listBottomThickness,
+    listBottomWidth1,
+    listBottomLengthX,
+    listBottomLengthY,
+    listBottomLengthY2,
+    bottomHeight,
+    0,0,0
+    );
+    
     
 // ---------- Top ----------
 

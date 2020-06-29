@@ -7,7 +7,7 @@
 
 */
 
-
+use <removal-side-holes.scad>;
 
 module top (
     standardSheathingWidth,
@@ -28,6 +28,7 @@ module top (
     ---------- Local varibles ---------- 
 */
 
+lengthRemovalSideHoles = 250;
 
 /*
     ---------- Code ---------- 
@@ -36,12 +37,9 @@ module top (
 translate([
     x,
     y,
-    z]) 
+    z])
+difference() { 
 union () {
-
-// Left
-color("Wheat")
-
 
 // top ply
 color("Wheat")
@@ -150,7 +148,8 @@ cube(size = [
 
 // top right list
 translate([
-    standardSheathingLength-edgeTopThickness,
+    standardSheathingLength
+    -edgeTopThickness,
     0,
     plywoodTopThickness]) 
 cube(size = [
@@ -223,6 +222,84 @@ cube(size = [
     standardSheathingWidth,
     mdfTopThickness]);
 
+}
+
+union () {
+// left front
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8
+    -lengthRemovalSideHoles/2,
+    -edgeTopThickness,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*3
+    -lengthRemovalSideHoles/2,
+    -edgeTopThickness,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*5
+    -lengthRemovalSideHoles/2,
+    -edgeTopThickness,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*7
+    -lengthRemovalSideHoles/2,
+    -edgeTopThickness,
+    plywoodTopThickness
+    );
+
+// back left
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8
+    -lengthRemovalSideHoles/2,
+    standardSheathingWidth,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*3
+    -lengthRemovalSideHoles/2,
+    standardSheathingWidth,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*5
+    -lengthRemovalSideHoles/2,
+    standardSheathingWidth,
+    plywoodTopThickness
+    );
+
+removalSideHoles (
+    edgeTopThickness,
+    lengthRemovalSideHoles,
+    standardSheathingLength/8*7
+    -lengthRemovalSideHoles/2,
+    standardSheathingWidth,
+    plywoodTopThickness
+    );
+
+}
 
 }}
     
