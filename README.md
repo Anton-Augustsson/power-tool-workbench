@@ -1,4 +1,6 @@
 # Power tool workbench
+![power-tool-workbench-front](power-tool-workbench-front.png)
+![power-tool-workbench-back](power-tool-workbench-back.png)
 
 ## Equipment
 ### The patf guide system
