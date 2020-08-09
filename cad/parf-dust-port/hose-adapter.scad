@@ -16,7 +16,7 @@ wallThickness = 3;
 wallThickness2 = 1;
     
 hoseLenght   = 55;
-hoseRadius   = 33/2;
+hoseRadius   = 31.5/2;
 mountLenght  = 40;
 mountRadius  = radiusRemoval/4;//45/2
 
@@ -38,6 +38,10 @@ translate([x,y,z])
 rotate ([rx,0,0])
 difference() {
 union(){
+translate([0,
+    -wallesRadius+wallesRadius2
+    +wallThickness
+    ,0])
 cylinder(
     h = mountLenght, 
     r = wallesRadius);
@@ -63,6 +67,9 @@ cylinder(
 }
 
 union () {
+translate([0,
+    -wallesRadius+wallesRadius2
+    +wallThickness,0])    
 cylinder(
     h = mountLenght
     -wallThickness, 
@@ -74,5 +81,5 @@ cylinder(
 }
 }}
 
-hoseAdapter (2,25,-90,0,0,0);
-//hoseAdapter (25,0,0,0,0);
+//hoseAdapter (2,25,-90,0,0,0);
+hoseAdapter (0,34,0,0,0,0);

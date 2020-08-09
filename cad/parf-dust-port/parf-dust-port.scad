@@ -6,7 +6,7 @@
 
 
 */
-
+$fn=90;
 use <hose-adapter.scad>
 //hoseAdapter (-90,0,0,0);
 
@@ -111,7 +111,7 @@ translate([
 rotate ([90,0,0])
 cylinder(
     h = depthGuide+18, 
-    r = radiusRemoval/4+0.1);    
+    r = radiusRemoval/4+1.2);    
 
 // remove hose adapter
 hoseAdapter (extraHookLenght,radiusRemoval,
