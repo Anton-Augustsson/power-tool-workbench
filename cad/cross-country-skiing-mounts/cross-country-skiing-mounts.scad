@@ -1,48 +1,9 @@
 use <threadlib/threadlib.scad>
 
 $fn=100;
-// width length height depth thickness
-
-/*
-*  Fundemental Variabels
-*/
-
 smallNum = 0.01;
 
-// ski mount spesific
-skiWidth       = 45; 
-skiExtraWidth  = 2; // Each side
 
-mountDepth     = 50; 
-mountSideThick = 4; 
-mountBaseThick = 6; 
-mountHeight    = 12.5; // Extra not total
-
-fastenerDiameter = 8.5; // To fasten skiis
-srewHoleDiameter = 8.5; // bottom hole 
-
-// hole attachment spesific
-holeDiameter     = 19.8; 
-holeStopDiameter = 35;
-holeHeight       = 25;
-holeStopThick    = 45-mountBaseThick;
-nutWidth         = 13.25;  
-
-
-/*
-*  Calculated Variables
-*/
-
-// ski mount spesific
-mountInnerDepth  = mountDepth;
-mountInnerWidth  = skiWidth
-                   +skiExtraWidth*2;   
-mountInnerHeight = mountHeight;
-mountTotDepth  = mountInnerDepth;
-mountTotWidth  = mountInnerWidth
-                 +mountSideThick*2;
-mountTotHeight = mountInnerHeight
-                 +mountBaseThick;
 
 /*
 *  Helper Model
@@ -60,8 +21,32 @@ module fhex(wid,height){
     cube([wid/1.7,wid,height],center = true);
 }}
 
+
 module skiMount(){
-    
+
+    skiWidth       = 45; 
+    skiExtraWidth  = 1; // Each side
+
+    mountDepth     = 50; 
+    mountSideThick = 4; 
+    mountBaseThick = 6; 
+    mountHeight    = 5; // Extra not total
+
+    fastenerDiameter = 8.5; // To fasten skiis
+    srewHoleDiameter = 8.5; // bottom hole 
+
+        
+    mountInnerDepth  = mountDepth;
+    mountInnerWidth  = skiWidth
+                    +skiExtraWidth*2;   
+    mountInnerHeight = mountHeight;
+    mountTotDepth  = mountInnerDepth;
+    mountTotWidth  = mountInnerWidth
+                    +mountSideThick*2;
+    mountTotHeight = mountInnerHeight
+                    +mountBaseThick;
+
+
     translate([
         -mountTotDepth/2,
         -mountTotWidth/2,
@@ -88,20 +73,6 @@ module skiMount(){
         mountInnerWidth,
         mountInnerHeight+smallNum]); 
     
-    // Hole for fasten the skiis
-    
-
-    translate([
-        mountTotDepth/2,
-        -smallNum,
-        mountHeight/2+mountBaseThick])
-    rotate([-90,0,0])
-    bolt("M6", turns=8, higbee_arc=30);
-    /*    
-    cylinder(
-        h=mountSideThick+smallNum*2,
-        d=fastenerDiameter);
-    */
     // Hole for mounting hole pice
     translate([
         mountTotDepth/2,
@@ -112,43 +83,101 @@ module skiMount(){
         d1=srewHoleDiameter,
         d2=srewHoleDiameter*2);
     }}
+}
+
+
+module crossCountrySkiBootsMount(){
     
+    width = 28;
+    depth = 45;
+    height = 36;
+    baseThickness = 6;
+    sideThickness = 4;
+    rodeHeight = 10;
+    rodeDiameter = 4.2;
+    srewHoleDiameter = 8.5; // bottom hole 
+
+    difference(){
+    cube(size = [
+        width,
+        depth,
+        height]); 
+    
+    union(){
+    translate([
+        -smallNum,
+        sideThickness,
+        baseThickness])
+    cube(size = [
+        width+smallNum*2,
+        depth-sideThickness*2,
+        height]);
+        
+    rotate([90,0,0])
+    translate([
+        width/2,
+        height*5/6,
+        -(depth+smallNum)])
+    cylinder(
+        h=depth+smallNum*2,
+        d=rodeDiameter);
+    
+    // Hole for mounting hole pice
+    translate([
+        width/2,
+        depth/2,
+        -smallNum])
+    cylinder(
+        h=baseThickness+smallNum*2,
+        d1=srewHoleDiameter,
+        d2=srewHoleDiameter*2);
+    }}     
 }
 
 
 module holeAttachment(){
+
+    diameter     = 19.8; 
+    stopDiameter = 35;
+    height       = 25;
+    stopThick    = 39;
+    nutWidth     = 13.25;  
+    srewHoleDiameter = 8.5; // bottom hole 
     
     // Main cylinder
     difference(){
     cylinder(
-        h=holeHeight,
-        d=holeDiameter);
+        h=height,
+        d=diameter);
     
-    translate([0,0,holeHeight/2-smallNum])
-    fhex(nutWidth,holeHeight+smallNum*3);
+    translate([0,0,height/2-smallNum])
+    fhex(nutWidth,height+smallNum*3);
     }
     
     // Stop
-    translate([0,0,-holeStopThick])
+    translate([0,0,-stopThick])
     difference(){
     cylinder(
-        h=holeStopThick,
-        d=holeStopDiameter);
+        h=stopThick,
+        d=stopDiameter);
         
     translate([0,0,-smallNum])
     cylinder(
-        h=holeStopThick+smallNum*2,
+        h=stopThick+smallNum*2,
         d=srewHoleDiameter);
     }
 }
+
 
 
 /*
 *  Model
 */
 
+//crossCountrySkiBootsMount();
+
 //translate([0,0,holeStopThick])
-skiMount();
+//skiMount();
 
 //rotate([180,0,0])
-//holeAttachment();
+holeAttachment();
